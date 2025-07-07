@@ -219,6 +219,26 @@ uv run ruff check .
 uv run ruff format .
 ```
 
+### CI/CD
+
+This project includes a GitHub Actions workflow (`.github/workflows/ci.yml`) for testing in the CI pipeline as well.
+
+The workflow is triggered on:
+- Push to `main` branch
+- Pull requests to `main` branch
+
+To run the same checks locally:
+
+```bash
+# Run all CI checks
+uv run ruff check .
+uv run ruff format --check .
+uv run pytest tests/ -v
+
+# Run tests with coverage
+uv run pytest tests/ --cov=app --cov-report=term-missing
+```
+
 ### Adding New Endpoints
 
 1. Create schemas in `app/schemas/`

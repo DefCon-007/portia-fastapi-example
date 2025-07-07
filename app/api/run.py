@@ -17,7 +17,9 @@ router = APIRouter()
     "/run",
     status_code=status.HTTP_200_OK,
     summary="Execute a query using the Portia SDK",
-    description="Accepts a query and optional tools list, then executes the query using the Portia SDK",
+    description=(
+        "Accepts a query and optional tools list, then executes the query using the Portia SDK"
+    ),
 )
 async def run_query(
     request: RunRequest,
@@ -54,7 +56,7 @@ async def run_query(
             },
         ) from e
     except Exception as e:
-        logger.exception(f"Unexpected error in run_query: {e}")
+        logger.exception("Unexpected error in run_query")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Internal server error: {e!s}",

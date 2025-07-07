@@ -24,8 +24,8 @@ dev = [
     "pytest>=8.0.0",
     "httpx>=0.28.0",
     "pytest-asyncio>=0.24.0",
+    "pytest-cov>=4.0.0",
 ]
-
 
 [tool.ruff]
 line-length=100
@@ -59,3 +59,17 @@ allow-star-arg-any = true  # Allows **kwargs: Any in type signatures.
 
 [tool.ruff.lint.pylint]
 max-args = 10
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow tests",
+    "asyncio: Async tests",
+]
+asyncio_mode = "auto"

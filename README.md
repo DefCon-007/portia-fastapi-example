@@ -75,6 +75,20 @@ This will start the FastAPI server locally in dev mode.
 uv run fastapi dev main.py
 ```
 
+### Using the Dockerfile
+
+1. Build the docker image
+    ```bash
+    docker build -t portia-fastapi-example .
+    ```
+
+2. Run the docker image
+    ```bash
+    docker run -p 8000:8000 \
+      -e OPENAI_API_KEY="your-openai-key" \
+      -e DEBUG="false" \
+      portia-fastapi-example
+    ```
 
 ### API Documentation
 
